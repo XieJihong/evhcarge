@@ -23,7 +23,8 @@ import java.util.List;
  * @Description: 运营商控制页面
  * @date 2016/6/25 19:11
  */
-@Controller("/operators")
+@Controller()
+@RequestMapping("/operators")
 public class OperatorsController extends AdminBaseController {
 
 	@Override
@@ -33,7 +34,7 @@ public class OperatorsController extends AdminBaseController {
 
 	@RequestMapping("/index")
 	public String index(){
-		return "index";
+		return "operators/index";
 	}
 
 

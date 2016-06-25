@@ -5,8 +5,6 @@ package cn.com.evlink.evcharge.web.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
@@ -29,29 +27,4 @@ public class HomeController extends AdminBaseController {
 		return "home";
 	}
 
-	@RequestMapping("/{v1}/{v2}")
-	public String forward(@PathVariable String v1, @PathVariable String v2){
-		String forward = "";
-		if(!StringUtils.isEmpty(v1)){
-			forward += "/" + v1;
-		}
-
-		if(!StringUtils.isEmpty(v2)){
-			forward += "/" + v2;
-		}
-
-		return forward;
-	}
-
-	@RequestMapping("/{v1}")
-	public String forward(@PathVariable String v1){
-		String forward = "";
-		if(!StringUtils.isEmpty(v1)){
-			forward += "/" + v1;
-		}else{
-			forward = "index";
-		}
-
-		return forward;
-	}
 }
