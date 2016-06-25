@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:dt="http://www.thymeleaf.org/dandelion/datatables"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layout/mainLayout">
+
+<head>
+	<title>运营商管理</title>
+	<link href="../../static/assets/css/app.css" th:href="@{/assets/css/app.css}" rel="stylesheet" type="text/css"/>
+	<link href="../../static/assets/plugins/datatables/css/jquery.dataTables.css" th:href="@{/assets/plugins/datatables/css/jquery.dataTables.css}" rel="stylesheet" type="text/css" media="screen"/>
+</head>
+<body>
+
+<div layout:fragment="pageTitle">
+	<div class="page-title">
+		<h2>运营商</h2>
+	</div>
+</div>
+<div layout:fragment="content">
+	<table id="owners" dt:table="true" dt:pagination="true" dt:export="pdf,csv,xls,xlsx,xml" dt:dom="lEfrtip" dt:ext="colreorder">
+		<thead dt:scroller="true">
+		<tr>
+			<th class="col-sm-1">ID</th>
+			<th class="col-sm-3">Name</th>
+			<th class="col-sm-3">Address</th>
+			<th>City</th>
+			<th>Telephone</th>
+			<th class="col-sm-2">Pets</th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr th:each="owner : ${owners}">
+			<td th:text="${owner.id}">1</td>
+			<td dt:pdf="|${owner.firstName} ${owner.lastName}|" dt:xml="|${owner.firstName} ${owner.lastName}|"><a href="ownerDetails.html" th:href="@{|/owners/${owner.id}|}" th:text="|${owner.firstName} ${owner.lastName}|">Mary Smith</a></td>
+			<td th:text="${owner.address}">45, Oxford Street</td>
+			<td th:text="${owner.city}">Cambridge</td>
+			<td th:text="${owner.telephone}">555-555-555</td>
+			<td><span th:each="pet : ${owner.pets}" th:text="${petStat.last}? ${pet.name} : |${pet.name}, | ">Rob</span></td>
+		</tr>
+		</tbody>
+	</table>
+
+
+	<section class="box ">
+		<table id="listTable" dt:table="true"  dt:url="@{/operators/list}"
+		       dt:serverSide="true" class="display">
+			<thead>
+			<tr>
+				<th dt:property="id">Id</th>
+				<th dt:property="name">名称</th>
+				<th dt:property="code">编码</th>
+				<th dt:property="createTime">创建时间</th>
+				<th dt:property="id">金额</th>
+			</tr>
+			</thead>
+		</table>
+	</section>
+</div>
+
+</body>
+</html>

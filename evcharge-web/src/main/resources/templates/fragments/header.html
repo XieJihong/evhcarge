@@ -1,0 +1,23 @@
+<!-- START TOPBAR -->
+<div th:fragment="header" class='page-topbar '>
+	<div class='logo-area'>
+	</div>
+	<div class='quick-area'>
+		<div class='pull-left'>
+			<ul class="info-menu left-links list-inline list-unstyled">
+				<li class="">
+					<a href="#" data-toggle="sidebar" class="sidebar_toggle">
+						<i class="fa fa-bars"></i>
+					</a>
+				</li>
+
+				<th:block th:include="fragments/header_fun"></th:block>
+
+			</ul>
+		</div>
+
+		<th:block th:include="fragments/user_profile"></th:block>
+
+	</div>
+</div>
+<!-- END TOPBAR -->
