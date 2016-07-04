@@ -24,7 +24,7 @@ public class HomeController extends AdminBaseController {
 
 	@RequestMapping("/home")
 	public String home(Model model) {
-		return "home";
+		return "dashboard";
 	}
 
 }

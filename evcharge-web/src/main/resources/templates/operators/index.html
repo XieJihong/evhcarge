@@ -19,13 +19,14 @@
 <div layout:fragment="content">
 	<section class="box ">
 		<table id="listTable" dt:table="true"  dt:url="@{/operators/list}"
-		       dt:serverSide="true" dt:pagination="true" dt:export="pdf,csv,xls,xlsx,xml"  class="display">
+		       dt:serverSide="true" dt:pagination="true" dt:paginationtype="full_numbers"
+		       dt:export="pdf,csv,xls,xlsx,xml" dt:dom="Efrtlpi" class="display">
 			<thead dt:scroller="true">
 			<tr>
 				<th dt:property="id">序号</th>
 				<th dt:property="name">名称</th>
 				<th dt:property="code">编码</th>
-				<th dt:property="createTime">创建时间</th>
+				<th dt:property="createTime" >创建时间</th>
 				<th dt:property="id">金额</th>
 			</tr>
 			</thead>

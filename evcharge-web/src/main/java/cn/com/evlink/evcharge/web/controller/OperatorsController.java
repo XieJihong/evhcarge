@@ -3,18 +3,10 @@
 */
 package cn.com.evlink.evcharge.web.controller;
 
-import cn.com.evlink.evcharge.entities.Operators;
-import com.github.dandelion.datatables.core.ajax.DataSet;
-import com.github.dandelion.datatables.core.ajax.DatatablesCriterias;
-import com.github.dandelion.datatables.core.ajax.DatatablesResponse;
+import cn.com.evlink.evcharge.service.OperatorsService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-
-import javax.servlet.http.HttpServletRequest;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
 /**
  * @author XieJihong
@@ -27,6 +19,9 @@ import java.util.List;
 @RequestMapping("/operators")
 public class OperatorsController extends AdminBaseController {
 
+	@Autowired
+	OperatorsService operatorsService;
+
 	@Override
 	protected String getHeaderTitle() {
 		return null;
@@ -38,30 +33,4 @@ public class OperatorsController extends AdminBaseController {
 	}
 
 
-	@RequestMapping(value = "/list")
-	public @ResponseBody
-	DatatablesResponse<Operators> findAllForDataTables(HttpServletRequest request) {
-		DatatablesCriterias criterias = DatatablesCriterias.getFromRequest(request);
-		DataSet<Operators> persons = this.findPersonsWithDatatablesCriterias(criterias);
-		return DatatablesResponse.build(persons, criterias);
-	}
-
-	public DataSet<Operators> findPersonsWithDatatablesCriterias(DatatablesCriterias criterias) {
-		List<Operators> persons = new ArrayList<>();
-
-		for(int i=0; i<1000;i++){
-			Operators operators = new Operators();
-			operators.setId(i + 1000L);
-			operators.setCode("1000"+i);
-			operators.setName("operators " + i);
-			operators.setCreateTime(new Date());
-
-			persons.add(operators);
-		}
-
-		Long count = 1000L;
-		Long countFiltered = 20L;
-
-		return new DataSet<Operators>(persons, count, countFiltered);
-	}
 }

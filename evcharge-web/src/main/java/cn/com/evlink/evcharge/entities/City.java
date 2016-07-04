@@ -6,19 +6,20 @@ package cn.com.evlink.evcharge.entities;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author XieJihong
  * @version V1.0
  * @Package cn.com.evlink.evcharge.entities
- * @Description: 运营商实体类
- * @date 2016/6/25 19:04
+ * @Description: ${todo}(用一句话描述该文件做什么)
+ * @date 2016/7/4 22:09
  */
 @Data
 @Entity
-@Table(name = "SYS_OPERATORS")
-public class Operators {
+@Table(name = "SYS_CITY")
+public class City {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -28,17 +29,14 @@ public class Operators {
 
 	private String code;
 
-	private String contacts;
+	private Float lat;
 
-	private String phone;
-
-	private String address;
-
-	private String remark;
+	private Float lot;
 
 	@ManyToOne
-	@JoinColumn(name = "CREATE_BY")
-	private User createBy;
+	@JoinColumn(name = "PARENT_ID")
+	private City parent;
 
-	private Date createTime;
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "parent")
+	private List<City> child = new ArrayList<>();
 }
