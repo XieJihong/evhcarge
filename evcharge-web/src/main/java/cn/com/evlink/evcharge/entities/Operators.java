@@ -4,6 +4,8 @@
 package cn.com.evlink.evcharge.entities;
 
 import lombok.Data;
+import org.springframework.data.annotation.CreatedBy;
+import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -36,9 +38,11 @@ public class Operators {
 
 	private String remark;
 
-	@ManyToOne
+	@CreatedBy
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "CREATE_BY")
 	private User createBy;
 
+	@CreatedDate
 	private Date createTime;
 }
