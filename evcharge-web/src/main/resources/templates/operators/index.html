@@ -18,18 +18,23 @@
 </div>
 <div layout:fragment="content">
 	<section class="box ">
-		<table id="listTable" dt:table="true"  dt:url="@{/operators/list}"
-		       dt:serverSide="true" dt:pagination="true" dt:paginationtype="full_numbers"
-		       dt:export="pdf,csv,xls,xlsx,xml" dt:dom="Efrtlpi" class="display">
+		<table id="listTable" dt:table="true">
 			<thead dt:scroller="true">
 			<tr>
-				<th dt:property="id">序号</th>
-				<th dt:property="name">名称</th>
-				<th dt:property="code">编码</th>
-				<th dt:property="createTime" >创建时间</th>
-				<th dt:property="id">金额</th>
+				<th>序号</th>
+				<th>名称</th>
+				<th>编码</th>
+				<th>创建时间</th>
+				<th>金额</th>
 			</tr>
 			</thead>
+			<tbody>
+			<tr th:each="person : ${persons}">
+				<td th:text="${person?.id}">1</td>
+				<td th:text="${person?.lastName}">Doe</td>
+				<td th:text="${person?.firstName}">John</td>
+			</tr>
+			</tbody>
 		</table>
 	</section>
 </div>

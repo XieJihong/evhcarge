@@ -5,7 +5,9 @@ package cn.com.evlink.evcharge.web.controller;
 
 import cn.com.evlink.evcharge.service.OperatorsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
@@ -28,7 +30,9 @@ public class OperatorsController extends AdminBaseController {
 	}
 
 	@RequestMapping("/index")
-	public String index(){
+	public String index(Model model){
+		operatorsService.findAll(new PageRequest(0,5));
+
 		return "operators/index";
 	}
 
