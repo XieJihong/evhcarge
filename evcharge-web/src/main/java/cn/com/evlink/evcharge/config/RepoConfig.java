@@ -5,6 +5,7 @@ package cn.com.evlink.evcharge.config;
 
 import org.springframework.boot.orm.jpa.EntityScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.jpa.datatables.repository.DataTablesRepositoryFactoryBean;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
@@ -20,6 +21,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableTransactionManagement
 @EnableJpaAuditing(auditorAwareRef = "springSecurityAuditorAware")
 @EntityScan("cn.com.evlink.evcharge.**.entities")
-@EnableJpaRepositories(basePackages = "cn.com.evlink.evcharge.**.repositories")
+@EnableJpaRepositories(
+		repositoryFactoryBeanClass = DataTablesRepositoryFactoryBean.class,
+		basePackages = "cn.com.evlink.evcharge.**.repositories")
 public class RepoConfig {
 }

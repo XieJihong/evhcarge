@@ -4,7 +4,7 @@
 package cn.com.evlink.evcharge.repositories;
 
 import cn.com.evlink.evcharge.entities.Operators;
-import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.data.jpa.datatables.repository.DataTablesRepository;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -15,5 +15,5 @@ import org.springframework.stereotype.Repository;
  * @date 2016/7/4 21:08
  */
 @Repository
-public interface OperatorsRepository extends PagingAndSortingRepository<Operators, Long> {
+public interface OperatorsRepository extends DataTablesRepository<Operators, Long> {
 }
